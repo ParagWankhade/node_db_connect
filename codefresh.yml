@@ -10,8 +10,7 @@ steps:
     title: Cloning the GIT repo
     stage: git
     type: git-clone
-    repo: owner/repo
-    git: my-git-provider
+    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
   
   TestRepo:
     title: test repo
