@@ -27,7 +27,7 @@ steps:
     type: build
     dockerfile: Docker/mongo
     image_name: build-mongo
-    tag: 1
+    tag: "1"
 
 
   BuildNode:
@@ -36,7 +36,7 @@ steps:
     type: build
     dockerfile: Docker/node
     image_name: build-node
-    tag: 1
+    tag: "1"
 
   TestMongoImage:    
     title: Build mongo image
