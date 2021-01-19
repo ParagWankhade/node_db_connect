@@ -46,7 +46,7 @@ steps:
     type: freestyle
     image: ${{BuildMongo}}
     commands:
-      - cat /etc/mongod.conf.orig
+      - mongod --config /etc/mongod.conf.orig
 
   #TestNodeImage:    
   #  title: Build node image
