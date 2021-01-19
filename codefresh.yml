@@ -3,6 +3,7 @@ stages:
   - git
   - testrepo
   - build
+  - testimage
   - test
 
 steps:
@@ -19,4 +20,34 @@ steps:
     commands:
       - cd node_db_connect
       - ls -a
+
+  BuildMongo:
+    title: Build mongo image
+    stage: build
+    type: build
+    dockerfile: Docker/mongo
+
+
+  BuildNode:
+    title: Build node image
+    stage: build
+    type: build
+    dockerfile: Docker/node
+
+  TestMongoImage:    
+    title: Build mongo image
+    stage: build
+    type: freestyle
+    image: {{BuildMongo}}
+    commands:
+      - cat /etc/mongod.conf.orig
+
+  TestNodeImage:    
+    title: Build mongo image
+    stage: build
+    type: freestyle
+    image: {{BuildNode}}
+    commands:
+      - ls
+  
 
