@@ -13,13 +13,13 @@ steps:
     type: git-clone
     repo: 'ParagWankhade/node_db_connect'
   
-  TestRepo:
-    title: test repo
-    stage: testrepo
-    image: alpine
-    commands:
-      - cd node_db_connect
-      - ls -a
+  #TestRepo:
+  #  title: test repo
+  #  stage: testrepo
+  #  image: alpine
+  #  commands:
+  #    - cd node_db_connect
+  #   - ls -a
 
   BuildMongo:
     title: Build mongo image
@@ -31,14 +31,14 @@ steps:
     tag: "1"
 
 
-  BuildNode:
-    title: Build node image
-    stage: build
-    type: build
-    working_directory: ${{CloneRepo}}
-    dockerfile: Docker/node/Dockerfile
-    image_name: build-node
-    tag: "1"
+  #BuildNode:
+  #  title: Build node image
+  # stage: build
+  #  type: build
+  #  working_directory: ${{CloneRepo}}
+  #  dockerfile: Docker/node/Dockerfile
+   # image_name: build-node
+   # tag: "1"
 
   TestMongoImage:    
     title: Build mongo image
@@ -48,17 +48,17 @@ steps:
     commands:
       - cat /etc/mongod.conf.orig
 
-  TestNodeImage:    
-    title: Build node image
-    stage: testimage
-    type: freestyle
-    environment:
-      - MONGO_URL = localhost
-    image: ${{BuildNode}}
-    commands:
-      - cd node_db_connect
-      - ls
-      #- node index.js
+  #TestNodeImage:    
+  #  title: Build node image
+  #  stage: testimage
+  #  type: freestyle
+  #  environment:
+  #    - MONGO_URL = localhost
+  #  image: ${{BuildNode}}
+  # commands:
+  #    - cd node_db_connect
+  #    - ls
+  #    #- node index.js
   
 
   my_integration_tests:
@@ -77,6 +77,5 @@ steps:
       composition:
         my_mongo_Service:
           image: ${{BuildMongo}}        
-          command: ["ls -lR"]
-            #["mongod","--config", "./mongodb_replica_sets/configs/mongod_1.conf"]
+          command: ["mongod","--config", "/etc/mongod.conf.orig"]
 
