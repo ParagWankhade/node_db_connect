@@ -64,7 +64,8 @@ steps:
     title: "Integration tests"
     stage: test
     commands:
-      - cd ${{CloneRepo}}
+      - cd node_db_connect
+      - npm install
       - node index.js
     services:
       composition:
