@@ -25,7 +25,8 @@ steps:
     title: Build mongo image
     stage: build
     type: build
-    dockerfile: ${{CF_REPO_NAME}}/Docker/mongo
+    working_directory: ${{CF_REPO_NAME}}/Docker/mongo
+    dockerfile: Dockerfile
     image_name: build-mongo
     tag: "1"
 
@@ -34,7 +35,8 @@ steps:
     title: Build node image
     stage: build
     type: build
-    dockerfile: ${{CF_REPO_NAME}}/Docker/node
+    working_directory: ${{CF_REPO_NAME}}/Docker/node
+    dockerfile: Dockerfile
     image_name: build-node
     tag: "1"
 
