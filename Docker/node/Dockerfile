@@ -2,7 +2,7 @@ FROM node
 WORKDIR /node_db_connect
 
 
-COPY ../../. .
+COPY . .
 
 RUN ls -a
 
