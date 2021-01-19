@@ -48,13 +48,13 @@ steps:
     commands:
       - cat /etc/mongod.conf.orig
 
-  .TestNodeImage:    
+  TestNodeImage:    
     title: Build node image
     stage: testimage
     type: freestyle
     image: ${{BuildNode}}
     commands:
-      - cd ${{CloneRepo}}
+      - cd node_db_connect
       - node index.js
   
 
