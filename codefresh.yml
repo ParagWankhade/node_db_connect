@@ -68,7 +68,8 @@ steps:
     environment:
       - MONGO_URL= my_mongo_Service
     commands:
-      - mongo mongodb://my_mongo_Service:27017/mydb?replicaSet=rs0
+      - mongo mongodb://my_mongo_Service:27017/mydb
+      #?replicaSet=rs0
       #- cd node_db_connect
       #- npm install
       #- node index.js
