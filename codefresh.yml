@@ -76,5 +76,7 @@ steps:
     services:
       composition:
         my_mongo_Service:
-          image: ${{BuildMongo}}  
+          image: ${{BuildMongo}}        
+          command: ["ls -lR"]
+            #["mongod","--config", "./mongodb_replica_sets/configs/mongod_1.conf"]
 
