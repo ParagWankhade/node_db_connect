@@ -62,15 +62,16 @@ steps:
   
 
   my_integration_tests:
-    image: '${{BuildNode}}'
+    image: mongo
     title: "Integration tests"
     stage: test
     environment:
       - MONGO_URL= my_mongo_Service
     commands:
-      - cd node_db_connect
-      - npm install
-      - node index.js
+      - mongo mongodb://my_mongo_Service:27017/mydb?replicaSet=rs0
+      #- cd node_db_connect
+      #- npm install
+      #- node index.js
     services:
       composition:
         my_mongo_Service:
