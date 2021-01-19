@@ -26,6 +26,8 @@ steps:
     stage: build
     type: build
     dockerfile: Docker/mongo
+    image_name: build-mongo
+    tag: 1
 
 
   BuildNode:
@@ -33,12 +35,14 @@ steps:
     stage: build
     type: build
     dockerfile: Docker/node
+    image_name: build-node
+    tag: 1
 
   TestMongoImage:    
     title: Build mongo image
     stage: build
     type: freestyle
-    image: {{BuildMongo}}
+    image: ${{BuildMongo}}
     commands:
       - cat /etc/mongod.conf.orig
 
@@ -46,7 +50,7 @@ steps:
     title: Build mongo image
     stage: build
     type: freestyle
-    image: {{BuildNode}}
+    image: ${{BuildNode}}
     commands:
       - ls
   
