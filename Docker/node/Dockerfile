@@ -1,10 +1,12 @@
 FROM node
-WORKDIR /app
+WORKDIR /node_db_connect
 
-COPY ["package.json", "package-lock.json*", "./"]
+
+COPY ../../. .
+
+RUN ls -a
 
 RUN npm install
 
-COPY . .
 
 CMD [ "node", "index.js" ]
