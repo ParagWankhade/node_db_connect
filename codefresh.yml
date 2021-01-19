@@ -52,6 +52,8 @@ steps:
     title: Build node image
     stage: testimage
     type: freestyle
+    environment:
+      MONGO_URL: "localhost"
     image: ${{BuildNode}}
     commands:
       - cd node_db_connect
@@ -63,6 +65,8 @@ steps:
     image: '${{BuildNode}}'
     title: "Integration tests"
     stage: test
+    environment:
+      MONGO_URL: "my_mongo_Service"
     commands:
       - cd node_db_connect
       - npm install
