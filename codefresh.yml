@@ -55,7 +55,8 @@ steps:
     image: ${{BuildNode}}
     commands:
       - cd node_db_connect
-      - node index.js
+      - ls
+      #- node index.js
   
 
   my_integration_tests:
