@@ -68,6 +68,7 @@ steps:
     environment:
       - MONGO_URL= my_mongo_Service
     commands:
+      - sleep 60
       - mongo mongodb://my_mongo_Service:27017/mydb
       #?replicaSet=rs0
       #- cd node_db_connect
