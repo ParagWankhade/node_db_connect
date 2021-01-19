@@ -48,7 +48,7 @@ steps:
     commands:
       - cat /etc/mongod.conf.orig
 
-  TestNodeImage:    
+  .TestNodeImage:    
     title: Build node image
     stage: testimage
     type: freestyle
@@ -61,6 +61,7 @@ steps:
   my_integration_tests:
     image: '${{BuildNode}}'
     title: "Integration tests"
+    stage: test
     commands:
       - cd ${{CloneRepo}}
       - node index.js
