@@ -47,7 +47,7 @@ steps:
     image: ${{BuildMongo}}
     commands:
       - cat /etc/mongod.conf.orig
-      - mongo --eval 'rs.initate()'
+      - mongo --eval 'rs.initiate()'
 
   #TestNodeImage:    
   #  title: Build node image
