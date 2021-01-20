@@ -70,7 +70,11 @@ steps:
       - MONGO_URL= my_mongo_Service
     commands:
       - sleep 60
-      - mongo mongodb://my_mongo_Service:27017/ --eval "rs.initiate();rs.add({'host':'my_mongo_Service_1:27017'});rs.status();"
+      - mongo mongodb://my_mongo_Service:27017/ --eval "rs.initiate()"
+      - echo "1"
+      - mongo mongodb://my_mongo_Service:27017/ --eval "rs.add({'host':'my_mongo_Service_1:27017'})"
+      - echo "2"
+      - mongo mongodb://my_mongo_Service:27017/ --eval "rs.status()"
       - mongo --host rs0/my_mongo_Service:27017
       #?replicaSet=rs0
       #- cd node_db_connect
