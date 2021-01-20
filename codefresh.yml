@@ -78,5 +78,6 @@ steps:
       composition:
         my_mongo_Service:
           image: ${{BuildMongo}}        
-          command: ["mongod","--config", "/etc/mongod.conf.orig"]
+          build_arguments:
+            - replSet=rs0
 
