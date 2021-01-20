@@ -29,8 +29,6 @@ steps:
     dockerfile: Dockerfile
     image_name: build-mongo
     tag: "1"
-    build_arguments:
-      - replSet=rs0
 
 
   #BuildNode:
@@ -48,7 +46,7 @@ steps:
     type: freestyle
     image: ${{BuildMongo}}
     commands:
-      - mongod --config /etc/mongod.conf.orig
+      - cat /etc/mongod.conf.orig
 
   #TestNodeImage:    
   #  title: Build node image
@@ -80,4 +78,6 @@ steps:
       composition:
         my_mongo_Service:
           image: ${{BuildMongo}}
+          commands:
+            - mongod --replSet rs0
 
