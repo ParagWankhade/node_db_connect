@@ -70,7 +70,8 @@ steps:
       - MONGO_URL= my_mongo_Service
     commands:
       - sleep 60
-      - mongo mongodb://my_mongo_Service:27017/mydb
+      - mongo mongodb://my_mongo_Service:27017/ --eval "rs.initiate();rs.add({'host':'my_mongo_Service_1:27017'});rs.status();"
+      - mongo --host rs0/my_mongo_Service:27017
       #?replicaSet=rs0
       #- cd node_db_connect
       #- npm install
@@ -78,5 +79,7 @@ steps:
     services:
       composition:
         my_mongo_Service:
+          image: ${{BuildMongo}}
+        my_mongo_Service_1:
           image: ${{BuildMongo}}
 
