@@ -47,6 +47,7 @@ steps:
     image: ${{BuildMongo}}
     commands:
       - cat /etc/mongod.conf.orig
+      - mongo --eval 'rs.initate()'
 
   #TestNodeImage:    
   #  title: Build node image
@@ -78,6 +79,4 @@ steps:
       composition:
         my_mongo_Service:
           image: ${{BuildMongo}}
-          commands:
-            - mongod --replSet rs0
 
