@@ -29,6 +29,8 @@ steps:
     dockerfile: Dockerfile
     image_name: build-mongo
     tag: "1"
+    build_arguments:
+      - replSet=rs0
 
 
   #BuildNode:
@@ -77,7 +79,5 @@ steps:
     services:
       composition:
         my_mongo_Service:
-          image: ${{BuildMongo}}        
-          build_arguments:
-            - replSet=rs0
+          image: ${{BuildMongo}}
 
