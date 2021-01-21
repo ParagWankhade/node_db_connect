@@ -29,6 +29,7 @@ steps:
     dockerfile: Dockerfile
     image_name: build-mongo
     tag: "1"
+    build_arguments: ["--replSet", "rs0", "--bind_ip_all"]
 
 
   #BuildNode:
