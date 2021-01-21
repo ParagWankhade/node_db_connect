@@ -69,8 +69,8 @@ steps:
     environment:
       - MONGO_URL= my_mongo_Service
     commands:
-      - sleep 60
-      - mongo mongodb://my_mongo_Service:27017/ --eval "rs.initiate()"
+      - sleep 40
+      - mongo mongodb://my_mongo_Service:27017/ --eval "rs.initiate({_id:'rs0'})"
       - sleep 20 && echo "1"
       - mongo mongodb://my_mongo_Service:27017/ --eval "rs.add({host:'my_mongo_Service_1:27017', priority:0, votes:0})"
       - sleep 20 && echo "2"
