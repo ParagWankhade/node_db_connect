@@ -68,7 +68,7 @@ steps:
     title: "Integration tests"
     stage: test
     type: composition
-    composition: compose.yaml
+    composition: ${{CloneRepo}}/compose.yaml
     composition_candidates:
       my_test_service:
         image: python
