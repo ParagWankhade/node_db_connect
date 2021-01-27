@@ -69,4 +69,10 @@ steps:
     stage: test
     type: composition
     composition: compose.yaml
+    composition_candidates:
+      my_test_service:
+        image: python
+        working_dir: /root
+        command: 'pwd'
+
 
