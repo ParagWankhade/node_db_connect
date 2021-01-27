@@ -45,9 +45,9 @@ steps:
     title: Build mongo image
     stage: testimage
     type: freestyle
-    image: ${{BuildMongo}}
+    image: alpine
     commands:
-      - cat /etc/mongod.conf.orig
+      - cat /node_db_connect/compose.yaml
       #- mongo --host rs0/localhost:27017 --eval 'rs.initiate()'
 
   #TestNodeImage:    
