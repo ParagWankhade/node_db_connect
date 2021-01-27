@@ -69,7 +69,7 @@ steps:
     stage: test
     commands: 
       - "sleep 30"
-      - "mongo mongodb://mongo1:27017/ --eval \"rs.initiate({_id:'rs0'})\""
+      - "mongo mongodb://mongo1:27017/ --eval \"rs.initiate()\""
       - "sleep 20 && echo \"1\""
       - "mongo mongodb://mongo1:27017/ --eval \"rs.add({host:'mongo2:27017', priority:0, votes:0})\""
       - "sleep 20 && echo \"2\""
