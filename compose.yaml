@@ -13,14 +13,14 @@ services:
           - mongo2
         
     mongo2:
-        hostname: mongo2
-        container_name: gogqlserver_mongo2
-        image: mongo
-        expose:
-            - 27017
-        ports:
-            - 27018:27017
-        entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
+      hostname: mongo2
+      container_name: gogqlserver_mongo2
+      image: mongo
+      expose:
+        - 27017
+      ports:
+        - 27018:27017
+      entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
 
     mongo-express:
         container_name: gogqlserver_mongo_express
