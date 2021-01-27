@@ -47,7 +47,7 @@ steps:
     type: freestyle
     image: alpine
     commands:
-      - cat /node_db_connect/compose.yaml
+      - cat node_db_connect/compose.yaml
       #- mongo --host rs0/localhost:27017 --eval 'rs.initiate()'
 
   #TestNodeImage:    
@@ -68,7 +68,7 @@ steps:
     title: "Integration tests"
     stage: test
     type: composition
-    composition: ../node_db_connect/compose.yaml
+    composition: /node_db_connect/compose.yaml
     composition_candidates:
       my_test_service:
         image: python
