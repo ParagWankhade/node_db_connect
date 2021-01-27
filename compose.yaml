@@ -1,5 +1,4 @@
 version: '3.7'
-
 services:
     mongo1:
         hostname: mongo1
@@ -12,7 +11,6 @@ services:
         entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
         depends_on:
           - mongo2
-          - mongo3
         
     mongo2:
         hostname: mongo2
@@ -22,18 +20,6 @@ services:
             - 27017
         ports:
             - 27018:27017
-        entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
-        depends_on:
-          - mongo3
-
-    mongo3:
-        hostname: mongo3
-        container_name: gogqlserver_mongo3
-        image: mongo
-        expose:
-            - 27017
-        ports:
-            - 27019:27017
         entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
 
     mongo-express:
@@ -52,4 +38,3 @@ services:
         depends_on:
           - mongo1
           - mongo2
-          - mongo3
