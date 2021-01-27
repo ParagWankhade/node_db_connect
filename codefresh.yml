@@ -68,45 +68,7 @@ steps:
     title: "Integration tests"
     stage: test
     type: composition
-    composition: 
-      version: '3.7'
-      services:
-        mongo1:
-          hostname: mongo1
-          container_name: gogqlserver_mongo1
-          image: mongo
-          expose:
-            - 27017
-          ports:
-            - 27017:27017
-          entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
-          depends_on:
-            - mongo2              
-        mongo2:
-          hostname: mongo2
-          container_name: gogqlserver_mongo2
-          image: mongo
-          expose:
-            - 27017
-          ports:
-            - 27018:27017
-          entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
-        mongo-express:
-          container_name: gogqlserver_mongo_express
-          image: mongo
-          ports:
-           - 8081:8081        
-          commands:
-            - sleep 30
-            - mongo mongodb://mongo1:27017/ --eval "rs.initiate({_id:'rs0'})"
-            - sleep 20 && echo "1"
-            - mongo mongodb://mongo1:27017/ --eval "rs.add({host:'mongo2:27017', priority:0, votes:0})"
-            - sleep 20 && echo "2"
-            - mongo mongodb://mongo1:27017/ --eval "rs.status()"
-            - mongo --host rs0/mongo1:27017
-          depends_on:
-            - mongo1
-            - mongo2
+    composition: ../node_db_connect/compose.yaml
     composition_candidates:
       my_test_service:
         image: python
