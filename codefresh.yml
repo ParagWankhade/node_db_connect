@@ -74,14 +74,14 @@ steps:
         mongo1:
           hostname: mongo1
           container_name: gogqlserver_mongo1
-            image: mongo
-            expose:
-              - 27017
-            ports:
-              - 27017:27017
-            entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
-            depends_on:
-              - mongo2
+          image: mongo
+          expose:
+            - 27017
+          ports:
+            - 27017:27017
+          entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
+          depends_on:
+            - mongo2
               
         mongo2:
           hostname: mongo2
