@@ -12,8 +12,6 @@ services:
       - 27017
     hostname: mongo1
     image: mongo
-    ports: 
-      - "27019:27017"
   mongo2: 
     container_name: gogqlserver_mongo2
     entrypoint: 
@@ -25,6 +23,4 @@ services:
       - 27017
     hostname: mongo2
     image: mongo
-    ports: 
-      - "27018:27017"
 version: "3"
